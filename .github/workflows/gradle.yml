@@ -13,6 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    env:
+      CLIENT_ID: ${{secrets.CLIENT_ID}}
+      REFRESH_TOKEN: ${{secrets.REFRESH_TOKEN}}
 
     steps:
     - uses: actions/checkout@v2
@@ -25,7 +28,4 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: run main method
-      env: 
-        CLIENT_ID: ${{secrets.CLIENT_ID}}
-        REFRESH_TOKEN: ${{secrets.REFRESH_TOKEN}}
-      run: ./gradlew run 
+      run: ./gradlew run
