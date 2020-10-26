@@ -19,7 +19,7 @@ public interface Constants {
   int TODAY_YEAR = cal.get(Calendar.YEAR);
   int TODAY_MONTH = cal.get(Calendar.MONTH) + 1;
   int TODAY_DATE = cal.get(Calendar.DATE);
-  int HOUR = cal.get(Calendar.HOUR_OF_DAY);
+  int HOUR = cal.get(Calendar.HOUR_OF_DAY) + 9;
   String TODAY_WEEK_OF_DAY = WEEK_DAY[cal.get(Calendar.DAY_OF_WEEK) - 1];
   String TODAY_FORMAT = String.format("%s년 %s월 %s일 (%s) %s시 \n\n",
       TODAY_YEAR, TODAY_MONTH, TODAY_DATE, TODAY_WEEK_OF_DAY, HOUR);
