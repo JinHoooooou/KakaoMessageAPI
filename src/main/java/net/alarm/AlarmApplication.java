@@ -1,14 +1,24 @@
 package net.alarm;
 
-import java.net.URISyntaxException;
+import java.io.IOException;
+
+import static net.constants.Constants.*;
+
+import net.crawling.Crawling;
 import net.kakao.message.SendToMe;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 public class AlarmApplication {
 
-  public static void main(String[] args) {
-    new SendToMe().sendMessageToMe("테스트입니다. 잘 되나요?");
+  public static void main(String[] args) throws IOException {
+
+    StringBuilder schedules = new StringBuilder();
+
+    schedules.append(TODAY_FORMAT);
+    for (String url : SCHEDULE_URLS) {
+      schedules.append(Crawling.getSchedule(url).getString("schedules"));
+    }
+
+    new SendToMe().sendMessageToMe(schedules.toString());
   }
 
 }

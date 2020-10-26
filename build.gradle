@@ -29,6 +29,7 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
     compile group: 'org.json', name: 'json', version: '20200518'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
 }
 
 test {
