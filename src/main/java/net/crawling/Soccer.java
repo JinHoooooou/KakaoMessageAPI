@@ -57,12 +57,17 @@ public class Soccer extends Crawling<Soccer> {
     if (schedule.isEmpty()) {
       result.append("경기 일정이 없습니다.\n");
     } else {
+      String lastTime = "";
       for (Soccer match : schedule) {
-        result.append(String.format("%s, %s(H) %s %s(A)\n",
-            match.getTime(), match.getHomeTeam(), match.getScore(), match.getAwayTeam()));
+        if (!lastTime.equals(match.getTime())) {
+          result.append(match.getTime()).append("\n");
+          lastTime = match.getTime();
+        }
+        result.append(String.format("%s(H) %s %s(A)\n",
+            match.getHomeTeam(), match.getScore(), match.getAwayTeam()));
       }
     }
-    result.append("------------------------------------\n\n");
+    result.append("\n\n");
     return result.toString();
   }
 }
